@@ -39,9 +39,12 @@ public class Human extends Beings {
 
     @Override
     protected void tryChangeDirection() {
+        Directions currentDirection = this.direction;
         double chance = Helper.nextDouble();
         if (chance <= 0.1) {
-            this.direction = Directions.byOrder(Helper.nextInt(4) + 1);
+            do {
+                this.direction = Directions.byOrder(Helper.nextInt(4) + 1);  // changes direction to random enum direction
+            } while (this.direction == currentDirection);  // repeat if new direction is same as previous
         }
     }
 
