@@ -3,6 +3,7 @@ package zombies;
 import util.Helper;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 
 public class City {
@@ -18,8 +19,19 @@ public class City {
 	 *  have a wall.
 	 *
 	 */
-	private boolean walls[][];
-	private int width, height;
+	protected static boolean walls[][];
+
+	protected static boolean humans[][];
+	protected static boolean UserHumans[][];
+	protected  ArrayList<Human> HumanList;
+
+	// private boolean zombies[][];
+	// TODO arraylist
+
+	//private boolean creatures[][];
+	// TODO arraylist
+
+	protected static int width, height;
 
 	/**
 	 * Create a new City and fill it with buildings and people.
@@ -34,6 +46,7 @@ public class City {
 		width = w;
 		height = h;
 		walls = new boolean[w][h];
+		humans = new boolean[w][h];
 		
 		/* 
 		 * EXTRA FUN: uncomment this to add buildings
@@ -53,9 +66,12 @@ public class City {
 	 * 
 	 * 
 	 */
-	private void populate(int numPeople)
-	{
-		// Generate numPeople new humans randomly placed around the city.
+	private void populate(int numPeople) {
+		HumanList = new ArrayList<>();
+		for (int i = 0; i < numPeople ; i++) {
+			Human temp = new Human();
+			HumanList.add(temp);
+		}
 	}
 
 
@@ -79,7 +95,7 @@ public class City {
 
 			for(int r = ty; r < ty + th; r++) {
 				if(r >= height)
-					continue;
+					continue;  // returns to beginning of loop
 				for(int c = tx; c < tx + tw; c++) {
 					if(c >= width)
 						break;
@@ -94,7 +110,9 @@ public class City {
 	 * Updates the state of the city for a time step.
 	 */
 	public void update() {
-		// Move humans, zombies, etc
+		for (Human human : HumanList) {
+			human.go();
+		}
 	}
 
 	/**
@@ -106,6 +124,9 @@ public class City {
 		
 		// EXTRA FUN: uncomment this to draw the walls
 		drawWalls();
+
+		drawHumans();
+
 	}
 
 	/**
@@ -121,6 +142,20 @@ public class City {
 			for(int c = 0; c < width; c++)
 			{
 				if(walls[c][r])
+				{
+					ZombieSim.dp.drawDot(c, r);
+				}
+			}
+		}
+	}
+
+	private void drawHumans() {
+		ZombieSim.dp.setPenColor(Color.GREEN);
+		for(int r = 0; r < height; r++)
+		{
+			for(int c = 0; c < width; c++)
+			{
+				if(humans[c][r])
 				{
 					ZombieSim.dp.drawDot(c, r);
 				}

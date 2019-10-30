@@ -1,12 +1,9 @@
 package zombies;
 
 import util.DotPanel;
-
 import java.awt.Color;
 import java.awt.Container;
-
 import javax.swing.JFrame;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -37,9 +34,7 @@ public class ZombieSim extends JFrame implements MouseListener{
 	private static final int DOT_SIZE = 3;
 	private static final int NUM_HUMANS = 200;
 	// EXTRA FUN modify the number of buildings to 60
-	private static final int NUM_BUILDINGS = 0;
-
-
+	private static final int NUM_BUILDINGS = 12;
 
 	/*
 	 * This fills the frame with a "DotPanel", a type of drawing canvas that
@@ -89,8 +84,8 @@ public class ZombieSim extends JFrame implements MouseListener{
 			world.update();
 			// Draw to screen and then refresh
 			world.draw();
-			dp.repaintAndSleep(33);
 
+			dp.repaintAndSleep(33);
 		}
 	}
 
@@ -105,18 +100,10 @@ public class ZombieSim extends JFrame implements MouseListener{
 	 * the screen at the location where the user clicked
 	 */
 	public void mouseClicked(MouseEvent e) {
-		/* 
-		 *  to get the location where the user clicked you 
-		 *  e.getX() and e.getY()
-		 *  you will have to divide these by the DOT_SIZE to 
-		 *  get the position on the screen where to place the human 
-		 
-			ZombieSim.dp.setPenColor(Color.WHITE);
-			ZombieSim.dp.drawDot(e.getX()/DOT_SIZE, e.getY()/DOT_SIZE);
-			
-		*/
-		
-		
+
+		ZombieSim.dp.setPenColor(Color.WHITE);
+		ZombieSim.dp.drawDot(e.getX()/DOT_SIZE, e.getY()/DOT_SIZE);
+
 	}
 	
 /* NO NEED TO IMPLEMENT ANY OF THIS BELOW */
