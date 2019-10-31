@@ -42,32 +42,32 @@ public class Human extends Beings {
         double chance = Helper.nextDouble();
         if (chance <= 0.1) {
             do {
-                this.direction = Directions.byOrder(Helper.nextInt(4) + 1);  // changes direction to random enum direction
+                this.direction = Directions.values()[Helper.nextInt(4)]; // changes direction to random enum direction
             } while (this.direction == currentDirection);  // repeat if new direction is same as previous
         }
     }
 
     @Override
     protected void move() {
-        if (this.direction == Directions.North && this.y - 1 > 0 && !City.walls[x][this.y - 1])
-        /* if the direction is North (in the negative y direction in Java graphics, and if
+         /* if the direction is North (in the negative y direction in Java graphics) and if
         moving north doesn't move off the screen and if moving north doesn't run into a wall,
         then move and update the human location matrix accordingly
-         */ {
+         */
+        if (this.direction == Directions.North && this.y - 1 > 0 && !City.walls[this.x][this.y - 1]) {
             City.humans[this.x][this.y] = false;
             this.y -= 1;
             City.humans[this.x][this.y] = true;
-        } else if (this.direction == Directions.South && this.y + 1 < City.height && !City.walls[x][this.y + 1]) {
+        } else if (this.direction == Directions.South && this.y + 1 < City.height && !City.walls[this.x][this.y + 1]) {
             City.humans[this.x][this.y] = false;
             this.y += 1;
             City.humans[this.x][this.y] = true;
         }
-        else if (this.direction == Directions.East && this.x + 1 < City.width && !City.walls[this.x+1][y]) {
+        else if (this.direction == Directions.East && this.x + 1 < City.width && !City.walls[this.x+1][this.y]) {
             City.humans[this.x][this.y] = false;
             this.x += 1;
             City.humans[this.x][this.y] = true;
         }
-        else if (this.direction == Directions.West && this.x - 1 > 0 && !City.walls[this.x-1][y]) {
+        else if (this.direction == Directions.West && this.x - 1 > 0 && !City.walls[this.x-1][this.y]) {
             City.humans[this.x][this.y] = false;
             this.x -= 1;
             City.humans[this.x][this.y] = true;
