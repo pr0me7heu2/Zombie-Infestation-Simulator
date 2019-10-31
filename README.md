@@ -1,3 +1,3 @@
 # Brrrrraiiiins
 
-![UML diagram](UML Diagram.png)
+![UML diagram](/UML Diagram.png)
