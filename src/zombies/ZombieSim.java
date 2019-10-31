@@ -8,24 +8,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 
-/*
- * You must add a way to represent humans.  When there is not a zombie apocalypse occurring, humans
- * should follow these simple rules:
- * 		if (1 in 10 chance):
- * 			turn to face a random direction (up/down/left/right)
- * 		Move in the current direction one space (EXTRA FUN: check if not blocked by a wall)
- *
- * We will add additional rules for dealing with sighting or running into zombies later.
- */
-
 public class ZombieSim extends JFrame implements MouseListener{
 
 	private static final long serialVersionUID = -5176170979783243427L;
 
-	/*
-	 * The Dot Panel object you will draw to.
-	 * NOTE: this is protected static! 
-	 */
+
+	// NOTE: this is protected static!
+
 	protected static DotPanel dp;
 
 	/* Define constants using static final variables */
@@ -69,15 +58,7 @@ public class ZombieSim extends JFrame implements MouseListener{
 		/* Create our city */
 		City world = new City(MAX_X, MAX_Y, NUM_BUILDINGS, NUM_HUMANS);
 
-		/* This is the Run Loop (aka "simulation loop" or "game loop")
-		 * It will loop forever, first updating the state of the world
-		 * (e.g., having humans take a single step) and then it will
-		 * draw the newly updated simulation. Since we don't want
-		 * the simulation to run too fast for us to see, it will sleep
-		 * after repainting the screen. Currently it sleeps for
-		 * 33 milliseconds, so the program will update at about 30 frames
-		 * per second.
-		 */
+		// run loop
 		while(true)
 		{
 			// Run update rules for world and everything in it
@@ -95,15 +76,9 @@ public class ZombieSim extends JFrame implements MouseListener{
 	}
 
 	@Override
-	/*
-	 * when the mouse is clicked we add a human on 
-	 * the screen at the location where the user clicked
-	 */
+	// adds human at mouse location if that space is empty
 	public void mouseClicked(MouseEvent e) {
-
-		Human human = new Human(e.getX() / DOT_SIZE,e.getY() / DOT_SIZE);
-
-		City.HumanList.add(human);
+		City.addhuman(e.getX() / DOT_SIZE, e.getY() / DOT_SIZE);
 
 	}
 	

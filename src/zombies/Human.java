@@ -26,12 +26,11 @@ public class Human extends Beings {
 
     public Human(int x, int y) {
         this.direction = Directions.North;  // North is default direction
-
-        if(!City.humans[x][y] && !City.walls[x][y]) {
             this.x = x;
             this.y = y;
             City.humans[x][y] = true; // update human matrix
-        }
+
+
     }
 
     // TODO getters and setters

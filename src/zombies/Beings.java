@@ -21,6 +21,14 @@ public abstract class Beings {
     protected int x;
     protected int y;
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     protected abstract void tryChangeDirection();
 
     protected abstract void move();

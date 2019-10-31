@@ -47,10 +47,7 @@ public class City {
 		height = h;
 		walls = new boolean[w][h];
 		humans = new boolean[w][h];
-		
-		/* 
-		 * EXTRA FUN: uncomment this to add buildings
-		 */
+
 		randomBuildings(numB);
 		
 		populate(numP);
@@ -71,6 +68,16 @@ public class City {
 		for (int i = 0; i < numPeople ; i++) {
 			Human temp = new Human();
 			HumanList.add(temp);
+		}
+	}
+
+	protected static void  addhuman(int x, int y) {
+		if(!City.humans[x][y] && !City.walls[x][y]) {
+			Human human = new Human(x,y);
+			HumanList.add(human);
+		}
+		else {
+			System.out.println("Warning: Can not place a new human there; space is currently occupied");
 		}
 	}
 
@@ -129,12 +136,7 @@ public class City {
 
 	}
 
-	/**
-	 * EXTRA FUN function... not used unless you are going for that
-	 * Draw the buildings.
-	 * First set the color for drawing, then draw a dot at each space
-	 * where there is a wall.
-	 */
+	// fills walls based on walls matrix
 	private void drawWalls() {
 		ZombieSim.dp.setPenColor(Color.DARK_GRAY);
 		for(int r = 0; r < height; r++)
@@ -149,6 +151,7 @@ public class City {
 		}
 	}
 
+	// draws humans based on human matrix
 	private void drawHumans() {
 		ZombieSim.dp.setPenColor(Color.GREEN);
 		for(int r = 0; r < height; r++)
