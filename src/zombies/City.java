@@ -23,7 +23,7 @@ public class City {
 
 	protected static boolean humans[][];
 	protected static boolean UserHumans[][];
-	protected  ArrayList<Human> HumanList;
+	protected static ArrayList<Human> HumanList;
 
 	// private boolean zombies[][];
 	// TODO arraylist

@@ -32,7 +32,7 @@ public class ZombieSim extends JFrame implements MouseListener{
 	public static final int MAX_X = 200;
 	public static final int MAX_Y = 200;
 	private static final int DOT_SIZE = 3;
-	private static final int NUM_HUMANS = 200;
+	private static final int NUM_HUMANS = 100;
 	// EXTRA FUN modify the number of buildings to 60
 	private static final int NUM_BUILDINGS = 12;
 
@@ -101,8 +101,9 @@ public class ZombieSim extends JFrame implements MouseListener{
 	 */
 	public void mouseClicked(MouseEvent e) {
 
-		ZombieSim.dp.setPenColor(Color.WHITE);
-		ZombieSim.dp.drawDot(e.getX()/DOT_SIZE, e.getY()/DOT_SIZE);
+		Human human = new Human(e.getX() / DOT_SIZE,e.getY() / DOT_SIZE);
+
+		City.HumanList.add(human);
 
 	}
 	

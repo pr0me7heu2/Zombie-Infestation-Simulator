@@ -9,7 +9,6 @@ public class Human extends Beings {
 
     public Human() {
         int tx, ty;
-        boolean tx_blocked, ty_blocked;
         this.direction = Directions.North;  // North is default direction
 
         do {  // assign random positions
@@ -31,6 +30,7 @@ public class Human extends Beings {
         if(!City.humans[x][y] && !City.walls[x][y]) {
             this.x = x;
             this.y = y;
+            City.humans[x][y] = true; // update human matrix
         }
     }
 
