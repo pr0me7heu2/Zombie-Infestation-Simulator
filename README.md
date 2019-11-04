@@ -1,10 +1,10 @@
 # Brrrrraiiiins
 >
 ## Overview
->This simulates the results of a Zombie outbreak in a small downtown area.  
->
->At the beginning, there are NUM_HUMANS generated in random locations throughout the map in addition to one zombie and a number of ghosts, survivors, and dogs.
->
+This simulates the results of a Zombie outbreak in a small downtown area.  
+
+At the beginning, there are NUM_HUMANS generated in random locations throughout the map in addition to one zombie and a number of ghosts, survivors, and dogs.
+
 ## Rules
 
 ### Humans
