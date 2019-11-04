@@ -61,10 +61,6 @@ public class Zombie extends Beings {
         if (this.seesAnother(City.humans)) {
             this.move();
         }
-        else if (this.seesAnother(City.ghosts)){
-            this.turnAway();
-            this.move();
-        }
         else if (this.againstWall()) {
            this.tryChangeDirection(100);
             this.move();

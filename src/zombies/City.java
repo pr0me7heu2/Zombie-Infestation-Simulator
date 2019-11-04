@@ -212,6 +212,7 @@ public class City {
 		avoid ConcurrentModificationException*/
 
 		for (int i = 0; i < ZombieList.size(); i++) {
+			// dogs and survivors can kill zombies if they are close enough
 			if (ZombieList.get(i).adjacentTo(dogs) || ZombieList.get(i).adjacentTo(survivors)) {
 				kill(ZombieList.get(i));
 				i--;
