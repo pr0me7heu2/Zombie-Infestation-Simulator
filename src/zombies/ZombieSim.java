@@ -76,8 +76,10 @@ public class ZombieSim extends JFrame implements MouseListener{
 	@Override
 	// adds human at mouse location if that space is empty
 	public void mouseClicked(MouseEvent e) {
-		City.addhuman(e.getX() / DOT_SIZE, e.getY() / DOT_SIZE);
-
+		if(e.getButton() == MouseEvent.BUTTON1)
+			City.addhuman(e.getX() / DOT_SIZE, e.getY() / DOT_SIZE);
+		if(e.getButton() == MouseEvent.BUTTON3)
+			City.addzombie(e.getX() / DOT_SIZE, e.getY() / DOT_SIZE);
 	}
 	
 /* NO NEED TO IMPLEMENT ANY OF THIS BELOW */

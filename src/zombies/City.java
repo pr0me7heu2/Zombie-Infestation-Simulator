@@ -117,12 +117,24 @@ public class City {
 	// create additional humans after initial populate(int numPeople) call
 	// new human created at Jplane coordinate (x,y)
 	protected static void  addhuman(int x, int y) {
-		if(!City.humans[x][y] && !City.walls[x][y]) {
+		if(!City.walls[x][y]) {
 			Human human = new Human(x,y);
 			HumanList.add(human);
 		}
 		else {
-			System.out.println("Warning: Can not place a new human there; space is currently occupied");
+			System.out.println("Warning: Can not place a new human there.");
+		}
+	}
+
+	// create additional humans after initial populate(int numPeople) call
+	// new human created at Jplane coordinate (x,y)
+	protected static void  addzombie(int x, int y) {
+		if(!City.walls[x][y]) {
+			Zombie zombie = new Zombie(x,y);
+			ZombieList.add(zombie);
+		}
+		else {
+			System.out.println("Warning: Can not place a new zombie there.");
 		}
 	}
 
@@ -131,14 +143,6 @@ public class City {
 	private static void removehuman(Human human) {
 		humans[human.getX()][human.getY()] = false;
 		HumanList.remove(human);
-	}
-
-	// adds zombie at (x,y)
-	// note that unlike addhuman, it does not check to
-	// see if the space is actually empty
-	private static void addzombie(int x, int y) {
-		Zombie zombie = new Zombie(x,y);
-		ZombieList.add(zombie);
 	}
 
 	// adds zombie where human is located and then removes human
