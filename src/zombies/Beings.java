@@ -89,17 +89,29 @@ public abstract class Beings {
             this.direction = Directions.East;
     }
 
-    // returns true if being is against the wall of the Jplane
+    // returns true if being is against the wall
     protected boolean againstWall() {
-        if (City.height - this.y == 1)
+
+        // returns true if being is facing the edge of the Jframe and within one unit of it
+        if (this.direction == Directions.South  && (City.height - this.y == 1))
             return true;
-        else if (this.y == 1)
+        else if (this.direction == Directions.North && (this.y == 1))
             return true;
-        else if (City.width - this.x == 1)
+        else if (this.direction == Directions.East && (City.width - this.x == 1))
             return true;
-        else if (this.x == 1)
+        else if (this.direction == Directions.West && x == 1)
             return true;
-        else return false;
+        // returns true if being is facing wall and within one unit of it
+        if (this.direction == Directions.North)
+            return City.walls[this.x][this.y-1];
+        else if (this.direction == Directions.South)
+            return City.walls[this.x][this.y+1];
+        else if (this.direction == Directions.East)
+            return City.walls[this.x+1][this.y];
+        else if (this.direction == Directions.West)
+            return City.walls[this.x-1][this.y];
+
+        return false;
     }
 
     protected abstract void move();
